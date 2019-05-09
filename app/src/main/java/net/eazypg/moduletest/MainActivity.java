@@ -19,11 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     Button featureButton1, featureButton2;
 
+    /**
+     * This function lets user to download different features dynamically from play store.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // This will install new features
         splitInstallManager = SplitInstallManagerFactory.create(getApplicationContext());
 
         featureButton1 = findViewById(R.id.featureButton1);
@@ -48,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadFirstFeature() {
 
+        // Send request to play store to download new feature
         SplitInstallRequest splitInstallRequest = SplitInstallRequest.newBuilder().addModule("feature1").build();
 
         splitInstallManager.startInstall(splitInstallRequest).addOnSuccessListener(new OnSuccessListener<Integer>() {
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadSecondFeature() {
 
+        // Send request to play store to download new feature
         SplitInstallRequest splitInstallRequest = SplitInstallRequest.newBuilder().addModule("feature2").build();
 
         splitInstallManager.startInstall(splitInstallRequest).addOnSuccessListener(new OnSuccessListener<Integer>() {
